@@ -63,6 +63,10 @@ export default function RootLayout() {
               <Stack.Screen name="reviews/[id]" options={{ presentation: 'card' }} />
               <Stack.Screen name="dealers/index" options={{ presentation: 'card' }} />
               <Stack.Screen name="dealers/[id]" options={{ presentation: 'card' }} />
+              <Stack.Screen name="blog/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="blog/[id]" options={{ presentation: 'card' }} />
+              <Stack.Screen name="videos/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="videos/[id]" options={{ presentation: 'card' }} />
             </Stack>
           </ErrorBoundary>
         </QueryClientProvider>

@@ -565,3 +565,229 @@ export const notifications = [
   { id: '4', title: 'Credit Card Connected!', body: 'Credit Card has been connected successfully.', time: 'Dec 22, 2024', isRead: true, type: 'payment' },
   { id: '5', title: 'Account Setup Successful', body: 'Your account has been set up successfully. Welcome to Carea!', time: 'Dec 22, 2024', isRead: true, type: 'account' },
 ];
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: string;
+  tags: string[];
+  image: string;
+  excerpt: string;
+  body: string;
+  author: string;
+  authorAvatar: string;
+  date: string;
+  readTime: string;
+  views: number;
+}
+
+export const blogCategories = ['All', 'Tips & Advice', 'Reviews', 'News', 'Comparison', 'Maintenance'];
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: 'Top 10 Cars to Buy in 2024 on a Budget',
+    category: 'Tips & Advice',
+    tags: ['Budget', 'Best Deals', '2024', 'New Cars'],
+    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800',
+    excerpt: 'Looking for a reliable car without breaking the bank? We've curated the top 10 cars you can buy in 2024 under $30,000.',
+    body: 'Buying a car on a budget doesn\'t mean you have to compromise on quality or features. In 2024, there are more great options than ever before at affordable price points.\n\nThe Suzuki Swift tops our list for budget buyers. At just $14,500 for the base model, it offers excellent fuel economy, a modern interior, and reliability that Suzuki is famous for.\n\nThe Toyota Corolla comes in at a higher price point but offers exceptional long-term value. Its resale value is among the best in its class, making it a smart financial decision.\n\nThe Honda City is another strong contender, especially if you need a slightly larger sedan with a more premium feel. The i-VTEC engine is smooth and economical.\n\nFor those who prefer a crossover, the Kia Sportage offers great value with its 7-speed DCT and advanced safety features. The Hyundai Tucson is similarly well-priced for what you get.\n\nWhen shopping on a budget, always consider the total cost of ownership: insurance, fuel, and maintenance — not just the sticker price.',
+    author: 'Ahsan Raza',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+    date: 'Dec 20, 2024',
+    readTime: '5 min read',
+    views: 12400,
+  },
+  {
+    id: '2',
+    title: 'Electric vs Petrol: Which is Better for Pakistani Roads?',
+    category: 'Comparison',
+    tags: ['Electric', 'Petrol', 'Comparison', 'EV'],
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800',
+    excerpt: 'As EV adoption grows globally, Pakistan faces unique infrastructure challenges. We compare electric and petrol options for local roads.',
+    body: 'Electric vehicles are the future, but are they ready for Pakistan\'s roads today? This is a question many car buyers are asking as EV options become more widely available.\n\nThe case for electric: Lower running costs, smoother drive, zero tailpipe emissions, and growing charging infrastructure in major cities.\n\nThe case for petrol: Widespread fueling infrastructure, lower upfront cost, familiar maintenance ecosystem, and no range anxiety concerns.\n\nFor city driving in Karachi, Lahore, or Islamabad where charging stations are becoming available, an EV can make sense for buyers who can install home charging. The fuel savings can offset the higher purchase price within 3-4 years.\n\nFor highway driving or rural areas, petrol remains the practical choice. Until charging infrastructure expands nationwide, range anxiety is a real concern.\n\nOur verdict: For urban buyers with home charging access, an EV is worth considering. For everyone else, modern petrol hybrids offer the best of both worlds.',
+    author: 'Sara Ahmed',
+    authorAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
+    date: 'Dec 18, 2024',
+    readTime: '7 min read',
+    views: 9800,
+  },
+  {
+    id: '3',
+    title: 'How to Inspect a Used Car Before Buying',
+    category: 'Tips & Advice',
+    tags: ['Used Cars', 'Inspection', 'Tips', 'Buying Guide'],
+    image: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800',
+    excerpt: 'Don\'t get burned by a lemon. Our comprehensive guide covers every inspection point before you hand over your money.',
+    body: 'Buying a used car is a minefield if you don\'t know what to look for. Here\'s your complete checklist.\n\n**Exterior:** Walk around the car in good daylight. Look for uneven panel gaps, paint overspray, or color mismatches — these indicate past accidents and repairs.\n\n**Underbody:** Get under the car or use a phone camera to check for rust, oil leaks, or damaged exhaust components.\n\n**Engine Bay:** Look for oil sludge, coolant leaks, cracked belts, or corroded battery terminals. A clean engine bay can also mean it was steam-cleaned to hide leaks.\n\n**Interior:** Check all electrics — windows, AC, sound system, all warning lights. Look for water stains on the carpet which indicate flooding.\n\n**Test Drive:** Drive on different road types. Listen for clunks, rattles, or grinding brakes. Test acceleration, braking, and steering.\n\n**Paperwork:** Verify the chassis number matches the documents. Check service history and ensure there are no outstanding finance payments on the car.',
+    author: 'Faisal Malik',
+    authorAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
+    date: 'Dec 15, 2024',
+    readTime: '8 min read',
+    views: 15600,
+  },
+  {
+    id: '4',
+    title: 'BMW M4 Competition: Full Road Test Review',
+    category: 'Reviews',
+    tags: ['BMW', 'M4', 'Sports Car', 'Review', 'Performance'],
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
+    excerpt: 'We spend a week with BMW\'s flagship performance coupe. Is the 503hp M4 Competition worth the price of admission?',
+    body: 'The BMW M4 Competition is not a car for the faint-hearted. With 503 horsepower from its twin-turbo inline-six, it\'s capable of speeds that will test the limits of your courage and your driving license.\n\nBut this is not just a straight-line machine. The M4\'s handling is extraordinary — balanced, predictable, and endlessly communicative. The adaptive suspension firms up perfectly in M mode without becoming punishing.\n\nInside, the M sport seats grip you firmly while still being comfortable on long drives. The curved display is BMW\'s best yet and the iDrive 8 system is finally intuitive enough to use while moving.\n\nFuel economy? Forget it. In spirited driving you\'ll see single digits. On a gentle motorway cruise, 8-10L/100km is achievable.\n\nOur verdict: At $145,000, it\'s a lot to spend on a car that isn\'t particularly practical. But as a driving machine, nothing else at this price comes close. It earns a deserved 9/10.',
+    author: 'Zafar Iqbal',
+    authorAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
+    date: 'Dec 12, 2024',
+    readTime: '10 min read',
+    views: 8200,
+  },
+  {
+    id: '5',
+    title: 'Car Maintenance Schedule: What to Do and When',
+    category: 'Maintenance',
+    tags: ['Maintenance', 'Service', 'Oil Change', 'Tips'],
+    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800',
+    excerpt: 'Regular maintenance is the secret to a long-lasting car. Here\'s exactly what needs to be done at each service interval.',
+    body: 'Skipping car maintenance is the most expensive saving you\'ll ever make. Here\'s a simple guide to keeping your car in top shape.\n\n**Every 5,000 km:** Engine oil and filter change. This is the single most important thing you can do for your engine.\n\n**Every 10,000 km:** Air filter check, tire rotation, brake inspection, battery check.\n\n**Every 20,000 km:** Spark plugs (for petrol cars), cabin air filter, fuel filter.\n\n**Every 40,000 km:** Transmission fluid, coolant flush, timing belt inspection.\n\n**Every 60,000 km:** Full timing belt or chain service if recommended by manufacturer.\n\n**Annual:** Full brake system service, wheel alignment and balancing, AC gas check.\n\nAlways use the oil grade specified in your owner\'s manual. Using the wrong grade can cause engine wear over time.\n\nKeeping a service logbook, whether digital or physical, adds resale value and gives future buyers confidence in the car\'s history.',
+    author: 'Nadia Hassan',
+    authorAvatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100',
+    date: 'Dec 8, 2024',
+    readTime: '6 min read',
+    views: 11300,
+  },
+  {
+    id: '6',
+    title: 'Toyota Corolla vs Honda Civic 2024: The Great Debate',
+    category: 'Comparison',
+    tags: ['Toyota', 'Honda', 'Corolla', 'Civic', 'Comparison'],
+    image: 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=800',
+    excerpt: 'Two iconic nameplates, one tough decision. We put the 2024 Corolla and Civic head-to-head in the ultimate sedan showdown.',
+    body: 'The Toyota Corolla and Honda Civic have been locked in battle for decades. For 2024, both have been significantly updated. Which one should you buy?\n\n**Performance:** The Civic wins with its 192hp turbocharged engine vs the Corolla\'s 169hp. For spirited driving, the Civic is more engaging.\n\n**Fuel Economy:** The Corolla edges ahead with its efficient CVT, averaging 14km/l vs the Civic\'s 12km/l in mixed driving.\n\n**Interior & Tech:** Both offer wireless CarPlay. The Civic\'s interior feels more premium with better materials. The Corolla\'s layout is more intuitive.\n\n**Safety:** Both score excellently. Toyota Safety Sense and Honda Sensing are equally comprehensive suites.\n\n**Price:** Corolla at $28,500 vs Civic at $32,000 — a significant $3,500 gap that may tip the decision for many buyers.\n\n**Reliability:** Both are excellent, but Toyota\'s service network in Pakistan is more widespread.\n\n**Verdict:** Buy the Corolla if fuel economy and total cost of ownership matter most. Buy the Civic if you want more performance and a more premium feel.',
+    author: 'Muhammad Usman',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+    date: 'Dec 5, 2024',
+    readTime: '9 min read',
+    views: 18900,
+  },
+];
+
+export interface Video {
+  id: string;
+  title: string;
+  category: string;
+  thumbnail: string;
+  duration: string;
+  views: number;
+  youtubeId: string;
+  description: string;
+  channel: string;
+  channelAvatar: string;
+  publishedAt: string;
+  tags: string[];
+}
+
+export const videoCategories = ['All', 'Reviews', 'How-To', 'Comparison', 'News', 'Test Drive'];
+
+export const videos: Video[] = [
+  {
+    id: '1',
+    title: 'Toyota Corolla 2024 — Full In-Depth Review',
+    category: 'Reviews',
+    thumbnail: 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=800',
+    duration: '18:42',
+    views: 245000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'We take the all-new Toyota Corolla 2024 for a comprehensive review covering performance, interior, safety tech, and value for money.',
+    channel: 'Carea Reviews',
+    channelAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+    publishedAt: 'Dec 20, 2024',
+    tags: ['Toyota', 'Corolla', 'Sedan', 'Review'],
+  },
+  {
+    id: '2',
+    title: 'BMW M4 vs Mercedes C63 — Ultimate Drag Race',
+    category: 'Comparison',
+    thumbnail: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
+    duration: '12:05',
+    views: 890000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'Two German performance icons go head to head on the drag strip. 503hp M4 Competition vs 671hp C63 AMG — which one wins?',
+    channel: 'Carea Reviews',
+    channelAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
+    publishedAt: 'Dec 18, 2024',
+    tags: ['BMW', 'Mercedes', 'Drag Race', 'Performance'],
+  },
+  {
+    id: '3',
+    title: 'How to Check Engine Oil — Step by Step Guide',
+    category: 'How-To',
+    thumbnail: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800',
+    duration: '6:30',
+    views: 120000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'Learn how to check your engine oil level, identify if it needs changing, and what type of oil your car needs. Essential for every car owner.',
+    channel: 'Carea Tips',
+    channelAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
+    publishedAt: 'Dec 15, 2024',
+    tags: ['Maintenance', 'How-To', 'Engine Oil', 'Beginner'],
+  },
+  {
+    id: '4',
+    title: 'Honda Civic 2024 Test Drive — Worth the Price?',
+    category: 'Test Drive',
+    thumbnail: 'https://images.unsplash.com/photo-1606611013016-969c19ba27bb?w=800',
+    duration: '22:15',
+    views: 312000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'We get behind the wheel of the new Honda Civic 2024 to see if its VTEC Turbo engine and premium interior justify the higher price tag.',
+    channel: 'Carea Reviews',
+    channelAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
+    publishedAt: 'Dec 12, 2024',
+    tags: ['Honda', 'Civic', 'Test Drive', 'Sedan'],
+  },
+  {
+    id: '5',
+    title: 'Top 5 Electric Cars Coming to Pakistan in 2025',
+    category: 'News',
+    thumbnail: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800',
+    duration: '9:48',
+    views: 178000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'The EV revolution is coming to Pakistan. We look at the top 5 electric vehicles expected to launch in 2025 and what they\'ll cost.',
+    channel: 'Carea News',
+    channelAvatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100',
+    publishedAt: 'Dec 10, 2024',
+    tags: ['Electric', 'EV', 'News', '2025'],
+  },
+  {
+    id: '6',
+    title: 'Suzuki Swift vs Kia Picanto — Budget Car Showdown',
+    category: 'Comparison',
+    thumbnail: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800',
+    duration: '15:20',
+    views: 95000,
+    youtubeId: 'dQw4w9WgXcQ',
+    description: 'Which budget city car comes out on top? We compare the Suzuki Swift and Kia Picanto on performance, comfort, features, and value.',
+    channel: 'Carea Reviews',
+    channelAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+    publishedAt: 'Dec 8, 2024',
+    tags: ['Suzuki', 'Kia', 'Budget', 'Comparison'],
+  },
+];
+
+export const provinces = ['All', 'Punjab', 'Sindh', 'KPK', 'Balochistan', 'ICT'];
+export const cities: Record<string, string[]> = {
+  All: ['All Cities', 'Karachi', 'Lahore', 'Islamabad', 'Rawalpindi', 'Multan', 'Peshawar', 'Quetta', 'Faisalabad'],
+  Punjab: ['All Punjab', 'Lahore', 'Rawalpindi', 'Multan', 'Faisalabad', 'Gujranwala', 'Sialkot'],
+  Sindh: ['All Sindh', 'Karachi', 'Hyderabad', 'Sukkur', 'Mirpur Khas'],
+  KPK: ['All KPK', 'Peshawar', 'Abbottabad', 'Mardan', 'Swat'],
+  Balochistan: ['All Balochistan', 'Quetta', 'Gwadar', 'Turbat'],
+  ICT: ['Islamabad'],
+};
+
+export const nearbyLocations = [
+  { id: '1', name: 'Karachi', distance: '2 km', count: 245, image: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400' },
+  { id: '2', name: 'Lahore', distance: '5 km', count: 312, image: 'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=400' },
+  { id: '3', name: 'Islamabad', distance: '12 km', count: 178, image: 'https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?w=400' },
+  { id: '4', name: 'Rawalpindi', distance: '15 km', count: 94, image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400' },
+  { id: '5', name: 'Multan', distance: '25 km', count: 67, image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400' },
+];

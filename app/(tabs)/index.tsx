@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, Platform, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, Platform } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { cars, brands, specialOffers } from '../../lib/data';
+import { cars, brands, specialOffers, blogPosts, videos, nearbyLocations } from '../../lib/data';
+
+const aiChips = ['Under $30K', 'Electric', 'SUV AWD', 'Family', 'Sports'];
 
 const budgetCategories = [
   { id: '1', label: 'Under $15K', max: 15000, icon: 'car-outline', color: '#e8f5e9', iconColor: '#4CAF50' },
@@ -13,15 +15,71 @@ const budgetCategories = [
 ];
 
 export default function HomeScreen() {
-  const [searchText, setSearchText] = useState('');
+  const [aiQuery, setAiQuery] = useState('');
   const insets = useSafeAreaInsets();
-  const topPad = Platform.OS === 'web' ? 67 : insets.top;
+  const topPad = Platform.OS === 'web' ? 0 : insets.top;
   const newCars = cars.filter(c => c.condition === 'new');
   const usedCars = cars.filter(c => c.condition === 'used');
 
   return (
-    <ScrollView style={[styles.container, { paddingTop: topPad }]} showsVerticalScrollIndicator={false}>
-      {/* Header */}
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+
+      {/* ===== AI HERO BANNER ===== */}
+      <View style={[styles.heroBanner, { paddingTop: topPad + 32 }]}>
+        <View style={styles.heroBg} />
+        <View style={styles.heroInner}>
+          <View style={styles.aiBadge}>
+            <Ionicons name="sparkles" size={13} color="#fff" />
+            <Text style={styles.aiBadgeText}>AI-Powered Car Search</Text>
+          </View>
+          <Text style={styles.heroTitle}>Find Your{'\n'}Perfect Drive</Text>
+          <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
+
+          <View style={styles.aiSearchRow}>
+            <TextInput
+              style={styles.aiInput}
+              placeholder="Best electric cars with 300+ mile range"
+              placeholderTextColor="#999"
+              value={aiQuery}
+              onChangeText={setAiQuery}
+            />
+            <TouchableOpacity
+              style={styles.aiSearchBtn}
+              onPress={() => router.push({ pathname: '/(tabs)/search', params: { q: aiQuery } })}
+            >
+              <Ionicons name="search" size={18} color="#000" />
+              <Text style={styles.aiSearchBtnText}>Search</Text>
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.aiChipsRow}>
+            {aiChips.map(chip => (
+              <TouchableOpacity key={chip} style={styles.aiChip} onPress={() => setAiQuery(chip)}>
+                <Text style={styles.aiChipText}>{chip}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+
+          <View style={styles.statsRow}>
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>12,000+</Text>
+              <Text style={styles.statLabel}>Vehicles</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>850+</Text>
+              <Text style={styles.statLabel}>Dealers</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>24,000+</Text>
+              <Text style={styles.statLabel}>Reviews</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      {/* ===== HEADER BELOW BANNER ===== */}
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>Good Morning</Text>
@@ -93,6 +151,29 @@ export default function HomeScreen() {
         </View>
       </View>
 
+      {/* Near You */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Near You</Text>
+          <TouchableOpacity onPress={() => router.push('/(tabs)/search')}><Text style={styles.seeAll}>See All</Text></TouchableOpacity>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
+          {nearbyLocations.map(loc => (
+            <TouchableOpacity key={loc.id} style={styles.locationCard}
+              onPress={() => router.push({ pathname: '/(tabs)/search', params: { city: loc.name } })}>
+              <Image source={{ uri: loc.image }} style={styles.locationImage} resizeMode="cover" />
+              <View style={styles.locationOverlay}>
+                <View style={styles.locationPinRow}>
+                  <Ionicons name="location" size={12} color="#fff" />
+                  <Text style={styles.locationName}>{loc.name}</Text>
+                </View>
+                <Text style={styles.locationCount}>{loc.count} cars</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
       {/* New Cars */}
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
@@ -118,7 +199,7 @@ export default function HomeScreen() {
         </ScrollView>
       </View>
 
-      {/* Quick Links */}
+      {/* Explore Quick Links */}
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Explore</Text>
@@ -172,6 +253,78 @@ export default function HomeScreen() {
         </ScrollView>
       </View>
 
+      {/* ===== BLOG SECTION ===== */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionTitleRow}>
+            <Ionicons name="newspaper-outline" size={18} color="#000" />
+            <Text style={styles.sectionTitle}>Latest Articles</Text>
+          </View>
+          <TouchableOpacity onPress={() => router.push('/blog')}><Text style={styles.seeAll}>See All</Text></TouchableOpacity>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 14 }}>
+          {blogPosts.slice(0, 4).map(post => (
+            <TouchableOpacity key={post.id} style={styles.blogCard} onPress={() => router.push({ pathname: '/blog/[id]', params: { id: post.id } })}>
+              <Image source={{ uri: post.image }} style={styles.blogImage} resizeMode="cover" />
+              <View style={styles.blogOverlay}>
+                <View style={styles.blogCatBadge}><Text style={styles.blogCatText}>{post.category}</Text></View>
+              </View>
+              <View style={styles.blogInfo}>
+                <Text style={styles.blogTitle} numberOfLines={2}>{post.title}</Text>
+                <View style={styles.blogMeta}>
+                  <Text style={styles.blogAuthor}>{post.author}</Text>
+                  <Text style={styles.blogDot}>•</Text>
+                  <Text style={styles.blogReadTime}>{post.readTime}</Text>
+                </View>
+                <View style={styles.tagsRow}>
+                  {post.tags.slice(0, 2).map(tag => (
+                    <View key={tag} style={styles.tagChip}><Text style={styles.tagChipText}>#{tag}</Text></View>
+                  ))}
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* ===== VIDEOS SECTION ===== */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionTitleRow}>
+            <Ionicons name="play-circle-outline" size={18} color="#000" />
+            <Text style={styles.sectionTitle}>Watch & Learn</Text>
+          </View>
+          <TouchableOpacity onPress={() => router.push('/videos')}><Text style={styles.seeAll}>See All</Text></TouchableOpacity>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 14 }}>
+          {videos.slice(0, 4).map(video => (
+            <TouchableOpacity key={video.id} style={styles.videoCard} onPress={() => router.push({ pathname: '/videos/[id]', params: { id: video.id } })}>
+              <View style={styles.videoThumbWrap}>
+                <Image source={{ uri: video.thumbnail }} style={styles.videoThumb} resizeMode="cover" />
+                <View style={styles.videoPlayOverlay}>
+                  <View style={styles.videoPlayBtn}>
+                    <Ionicons name="play" size={20} color="#fff" />
+                  </View>
+                  <View style={styles.videoDuration}>
+                    <Text style={styles.videoDurationText}>{video.duration}</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.videoInfo}>
+                <Text style={styles.videoCat}>{video.category}</Text>
+                <Text style={styles.videoTitle} numberOfLines={2}>{video.title}</Text>
+                <View style={styles.videoMeta}>
+                  <Text style={styles.videoChannel}>{video.channel}</Text>
+                  <Text style={styles.videoDot}>•</Text>
+                  <Ionicons name="eye-outline" size={11} color="#aaa" />
+                  <Text style={styles.videoViews}>{(video.views / 1000).toFixed(0)}K</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
       {/* Recent Ads */}
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
@@ -202,7 +355,28 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingBottom: 16 },
+
+  heroBanner: { backgroundColor: '#0a0a0a', paddingBottom: 32 },
+  heroBg: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#0d0d0d' },
+  heroInner: { paddingHorizontal: 24 },
+  aiBadge: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'flex-start', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 6, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
+  aiBadgeText: { fontSize: 12, fontFamily: 'Inter_600SemiBold', color: '#fff' },
+  heroTitle: { fontSize: 34, fontFamily: 'Inter_700Bold', color: '#fff', lineHeight: 42, marginBottom: 12 },
+  heroSubtitle: { fontSize: 14, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.65)', lineHeight: 21, marginBottom: 22 },
+  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
+  aiInput: { flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 12, paddingHorizontal: 14, paddingVertical: 13, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
+  aiSearchBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#fff', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 13 },
+  aiSearchBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold', color: '#000' },
+  aiChipsRow: { flexGrow: 0, marginBottom: 22 },
+  aiChip: { marginRight: 8, borderWidth: 1, borderColor: 'rgba(255,255,255,0.25)', borderRadius: 20, paddingHorizontal: 13, paddingVertical: 6 },
+  aiChipText: { fontSize: 12, fontFamily: 'Inter_500Medium', color: 'rgba(255,255,255,0.85)' },
+  statsRow: { flexDirection: 'row', alignItems: 'center', gap: 0 },
+  statItem: { flex: 1, alignItems: 'center' },
+  statNum: { fontSize: 20, fontFamily: 'Inter_700Bold', color: '#fff' },
+  statLabel: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.55)', marginTop: 2 },
+  statDivider: { width: 1, height: 36, backgroundColor: 'rgba(255,255,255,0.15)' },
+
+  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20, paddingBottom: 16 },
   greeting: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#888' },
   username: { fontSize: 18, fontFamily: 'Inter_700Bold', color: '#000' },
   headerRight: { flexDirection: 'row', alignItems: 'center', gap: 12 },
@@ -218,8 +392,17 @@ const styles = StyleSheet.create({
   offerDesc: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.7)', lineHeight: 17 },
   section: { marginTop: 24 },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 14 },
+  sectionTitleRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   sectionTitle: { fontSize: 17, fontFamily: 'Inter_700Bold', color: '#000' },
   seeAll: { fontSize: 13, fontFamily: 'Inter_500Medium', color: '#888' },
+
+  locationCard: { width: 140, height: 100, borderRadius: 16, overflow: 'hidden' },
+  locationImage: { width: '100%', height: '100%' },
+  locationOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.38)', justifyContent: 'flex-end', padding: 10 },
+  locationPinRow: { flexDirection: 'row', alignItems: 'center', gap: 3 },
+  locationName: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#fff' },
+  locationCount: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.8)', marginTop: 1 },
+
   brandItem: { alignItems: 'center', gap: 8 },
   brandLogo: { width: 56, height: 56, borderRadius: 28, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center' },
   brandImg: { width: 36, height: 36 },
@@ -239,6 +422,41 @@ const styles = StyleSheet.create({
   carLocation: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#888' },
   carMileage: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#888' },
   carPrice: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#000' },
+  quickLinksGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 20, gap: 12 },
+  quickCard: { flex: 1, minWidth: '45%', borderRadius: 16, padding: 16, gap: 6 },
+  quickLabel: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#fff', marginTop: 4 },
+  quickSub: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.7)' },
+
+  blogCard: { width: 200, borderRadius: 16, overflow: 'hidden', backgroundColor: '#f8f8f8' },
+  blogImage: { width: '100%', height: 120 },
+  blogOverlay: { position: 'absolute', top: 8, left: 8 },
+  blogCatBadge: { backgroundColor: '#000', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4 },
+  blogCatText: { fontSize: 9, fontFamily: 'Inter_600SemiBold', color: '#fff', textTransform: 'uppercase', letterSpacing: 0.5 },
+  blogInfo: { padding: 10 },
+  blogTitle: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#000', lineHeight: 18, marginBottom: 6 },
+  blogMeta: { flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 6 },
+  blogAuthor: { fontSize: 11, fontFamily: 'Inter_500Medium', color: '#888' },
+  blogDot: { color: '#ccc', fontSize: 10 },
+  blogReadTime: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#aaa' },
+  tagsRow: { flexDirection: 'row', gap: 4 },
+  tagChip: { backgroundColor: '#f0f0f0', borderRadius: 6, paddingHorizontal: 7, paddingVertical: 3 },
+  tagChipText: { fontSize: 10, fontFamily: 'Inter_500Medium', color: '#555' },
+
+  videoCard: { width: 200, borderRadius: 16, overflow: 'hidden', backgroundColor: '#f8f8f8' },
+  videoThumbWrap: { position: 'relative', width: '100%', height: 120 },
+  videoThumb: { width: '100%', height: '100%' },
+  videoPlayOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.3)', alignItems: 'center', justifyContent: 'center' },
+  videoPlayBtn: { width: 38, height: 38, borderRadius: 19, backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', paddingLeft: 3 },
+  videoDuration: { position: 'absolute', bottom: 7, right: 8, backgroundColor: 'rgba(0,0,0,0.7)', borderRadius: 5, paddingHorizontal: 7, paddingVertical: 2 },
+  videoDurationText: { fontSize: 10, fontFamily: 'Inter_600SemiBold', color: '#fff' },
+  videoInfo: { padding: 10 },
+  videoCat: { fontSize: 10, fontFamily: 'Inter_600SemiBold', color: '#888', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 3 },
+  videoTitle: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#000', lineHeight: 18, marginBottom: 5 },
+  videoMeta: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  videoChannel: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#888', flex: 1 },
+  videoDot: { color: '#ccc', fontSize: 10 },
+  videoViews: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#aaa' },
+
   adRow: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 10, gap: 12, borderBottomWidth: 1, borderBottomColor: '#f5f5f5' },
   adImage: { width: 72, height: 56, borderRadius: 10 },
   adInfo: { flex: 1 },
@@ -248,8 +466,4 @@ const styles = StyleSheet.create({
   adMileage: { fontSize: 12, fontFamily: 'Inter_400Regular', color: '#888' },
   adCity: { fontSize: 12, fontFamily: 'Inter_400Regular', color: '#888' },
   adPrice: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#000' },
-  quickLinksGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 20, gap: 12 },
-  quickCard: { flex: 1, minWidth: '45%', borderRadius: 16, padding: 16, gap: 6 },
-  quickLabel: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#fff', marginTop: 4 },
-  quickSub: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.7)' },
 });

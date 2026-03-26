@@ -12,6 +12,8 @@ const accountItems = [
   { icon: 'star-outline', label: 'Reviews', route: '/reviews' },
   { icon: 'git-compare-outline', label: 'Compare', route: '/comparison' },
   { icon: 'trophy-outline', label: 'Top Deals', route: '/top-deals' },
+  { icon: 'newspaper-outline', label: 'Blog', route: '/blog' },
+  { icon: 'play-circle-outline', label: 'Videos', route: '/videos' },
 ];
 
 const menuItems = [
