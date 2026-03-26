@@ -1,7 +1,7 @@
 # Carea — Car Marketplace App
 
 ## Overview
-A comprehensive car marketplace mobile app built with Expo/React Native, targeting both iOS/Android and web. The app covers the full car-buying lifecycle: onboarding, authentication, browsing cars, viewing details, messaging dealers, managing a wallet, tracking orders, and more.
+A comprehensive car marketplace mobile app built with Expo/React Native, targeting both iOS/Android and web. The app covers the full car-buying lifecycle: onboarding, browsing cars (new & used), car detail views, comparison, reviews, dealer directory, messaging, wallet, orders, and more.
 
 ## Tech Stack
 - **Framework:** Expo SDK 53 + React Native 0.79
@@ -9,12 +9,12 @@ A comprehensive car marketplace mobile app built with Expo/React Native, targeti
 - **Language:** TypeScript
 - **State/Data:** TanStack React Query
 - **Fonts:** @expo-google-fonts/inter
-- **Icons:** @expo/vector-icons (Ionicons)
+- **Icons:** @expo/vector-icons (Ionicons, MaterialCommunityIcons)
 - **Gestures:** react-native-gesture-handler
 - **Animations:** react-native-reanimated
 - **Safe Area:** react-native-safe-area-context
 - **Gradients:** expo-linear-gradient
-- **Package Manager:** npm
+- **Package Manager:** npm (always use `--legacy-peer-deps`)
 
 ## Project Structure
 ```
@@ -34,23 +34,33 @@ A comprehensive car marketplace mobile app built with Expo/React Native, targeti
 │   │   ├── create-pin.tsx
 │   │   └── fill-profile.tsx
 │   ├── (tabs)/
-│   │   ├── _layout.tsx          # Tab bar (Home/Search/Inbox/Wallet/Profile)
-│   │   ├── index.tsx            # Home feed (offers, brands, top deals)
-│   │   ├── search.tsx           # Search + filter
-│   │   ├── inbox.tsx            # Messages + calls
-│   │   ├── wallet.tsx           # Balance + transactions
-│   │   └── profile.tsx          # User profile + settings nav
-│   ├── car/[id].tsx             # Car detail screen
-│   ├── chat/[id].tsx            # Chat screen
+│   │   ├── _layout.tsx          # Tab bar: Home/Search/Sell/Favorites/Profile (Inbox+Wallet hidden via href:null)
+│   │   ├── index.tsx            # Home feed (offers, brands, budget categories, top deals, explore grid)
+│   │   ├── search.tsx           # Search + filter (new/used toggle, sort)
+│   │   ├── sell.tsx             # Sell a car (multi-step form)
+│   │   ├── favorites.tsx        # Saved/liked cars
+│   │   ├── inbox.tsx            # Messages + calls (accessible from Profile)
+│   │   ├── wallet.tsx           # Balance + transactions (accessible from Profile)
+│   │   └── profile.tsx          # User profile + account grid + settings nav
+│   ├── car/[id].tsx             # Car detail (Overview/Features/Reviews tabs + Compare button)
+│   ├── new-cars.tsx             # New cars listing
+│   ├── used-cars.tsx            # Used cars listing
+│   ├── comparison.tsx           # Side-by-side car comparison (up to 3)
+│   ├── reviews/
+│   │   ├── index.tsx            # Car reviews list (rating breakdown, brand filter)
+│   │   └── [id].tsx             # Individual review detail
+│   ├── dealers/
+│   │   ├── index.tsx            # Dealer directory (city filter, Call + View Inventory)
+│   │   └── [id].tsx             # Dealer profile + inventory
+│   ├── chat/[id].tsx            # Chat screen (per conversation)
 │   ├── notifications.tsx
-│   ├── wishlist.tsx
 │   ├── offers.tsx
 │   ├── top-deals.tsx
 │   ├── orders/
 │   │   ├── index.tsx            # Order list
 │   │   └── track.tsx            # Order tracking timeline
 │   └── settings/
-│       ├── index.tsx            # Redirects to profile
+│       ├── index.tsx
 │       ├── edit-profile.tsx
 │       ├── address.tsx
 │       ├── notifications.tsx
@@ -61,24 +71,27 @@ A comprehensive car marketplace mobile app built with Expo/React Native, targeti
 │       ├── invite.tsx
 │       └── help.tsx
 ├── lib/
-│   ├── data.ts                  # Mock data (cars, brands, offers, conversations, transactions, orders, notifications)
+│   ├── data.ts                  # Mock data (cars, brands, offers, reviews, dealers, conversations, transactions, orders, notifications)
 │   ├── theme.ts                 # Colors, typography, spacing
 │   └── query-client.ts          # TanStack React Query client
 ├── components/
 │   └── ErrorBoundary.tsx
-├── metro.config.js              # Metro bundler config
-├── babel.config.js              # Babel (expo preset)
-├── app.json                     # Expo app config
-└── tsconfig.json                # TypeScript (extends expo/tsconfig.base)
+├── metro.config.js
+├── babel.config.js
+├── app.json                     # expo-font plugin removed (causes build failure)
+└── tsconfig.json
 ```
 
 ## Development
-- Run: `npx expo start --web --port 5000`
-- Workflow: "Start application" (configured in Replit)
-- Port: 5000
+- **Run command:** `node_modules/.bin/expo start --web --port 5000` (not npx — avoids upgrade prompt)
+- **Workflow:** "Start application" (configured in Replit)
+- **Port:** 5000
+- **Install packages:** always use `npm install --legacy-peer-deps`
 
 ## Important Notes
-- **Path Aliases:** `@/` is NOT used — all imports use relative paths (`../../lib/data`) because Metro doesn't resolve tsconfig paths aliases without babel-plugin-module-resolver
+- **expo-font removed from app.json plugins** — causes build failure with @expo/config-plugins mismatch
+- **Path Aliases:** `@/` is NOT used — all imports use relative paths because Metro doesn't resolve tsconfig path aliases without babel-plugin-module-resolver
 - **Web Safe Areas:** Platform.OS === 'web' uses hardcoded `topPad = 67`, `botPad = 34` instead of insets
-- **Tab Bar:** Height 84px on web (50 + 34 padding)
-- **Mock Data:** All data is in `lib/data.ts` — 10 cars, 8 brands, 4 special offers, 8 conversations, 8 transactions, 4 orders, 5 notifications
+- **Tab Bar:** 5 visible tabs (Home, Search, Sell, Favorites, Profile); Inbox and Wallet are hidden (`href: null`) and accessible via Profile's "My Account" grid
+- **Mock Data:** All data lives in `lib/data.ts` — cars, brands, offers, reviews, dealers, conversations, transactions, orders, notifications
+- **Warnings to ignore:** "shadow* style props deprecated" and expo package version mismatch warnings — app still works

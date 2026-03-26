@@ -3,13 +3,24 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions
 import { router, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { cars } from '../../lib/data';
+import { cars, reviews } from '../../lib/data';
 
 const { width } = Dimensions.get('window');
+
+function Stars({ rating }: { rating: number }) {
+  return (
+    <View style={{ flexDirection: 'row', gap: 2 }}>
+      {[1, 2, 3, 4, 5].map(i => (
+        <Ionicons key={i} name={i <= rating ? 'star' : 'star-outline'} size={13} color="#FFD700" />
+      ))}
+    </View>
+  );
+}
 
 export default function CarDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const car = cars.find(c => c.id === id) || cars[0];
+  const carReviews = reviews.filter(r => r.carId === car.id);
   const [currentImage, setCurrentImage] = useState(0);
   const [activeTab, setActiveTab] = useState<'Details' | 'Specs' | 'Reviews'>('Details');
   const [isFavorite, setIsFavorite] = useState(false);
@@ -101,8 +112,40 @@ export default function CarDetailScreen() {
 
         {activeTab === 'Reviews' && (
           <View style={styles.detailsSection}>
-            <Text style={styles.reviewScore}>{car.rating}</Text>
-            <Text style={styles.reviewCount}>Based on {car.reviews} reviews</Text>
+            <View style={styles.ratingOverview}>
+              <Text style={styles.reviewScore}>{car.rating}</Text>
+              <View style={{ alignItems: 'flex-start' }}>
+                <Stars rating={Math.round(car.rating)} />
+                <Text style={styles.reviewCount}>{car.reviews} reviews</Text>
+              </View>
+            </View>
+            {carReviews.length > 0 ? carReviews.map(rev => (
+              <TouchableOpacity key={rev.id} style={styles.reviewCard}
+                onPress={() => router.push({ pathname: '/reviews/[id]', params: { id: rev.id } })}>
+                <View style={styles.reviewerRow}>
+                  <Image source={{ uri: rev.reviewerAvatar }} style={styles.reviewerAvatar} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.reviewerName}>{rev.reviewerName}</Text>
+                    <Text style={styles.reviewDate}>{rev.date}</Text>
+                  </View>
+                  <Stars rating={rev.rating} />
+                </View>
+                <Text style={styles.reviewTitle}>{rev.title}</Text>
+                <Text style={styles.reviewBody} numberOfLines={3}>{rev.body}</Text>
+              </TouchableOpacity>
+            )) : (
+              <View style={styles.noReviewsWrap}>
+                <Ionicons name="chatbubble-outline" size={40} color="#e0e0e0" />
+                <Text style={styles.noReviewsText}>No reviews yet for this car</Text>
+                <TouchableOpacity onPress={() => router.push('/reviews')}>
+                  <Text style={styles.allReviewsLink}>Browse all reviews →</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            <TouchableOpacity style={styles.allReviewsBtn} onPress={() => router.push('/reviews')}>
+              <Text style={styles.allReviewsBtnText}>All Car Reviews</Text>
+              <Ionicons name="arrow-forward" size={16} color="#000" />
+            </TouchableOpacity>
           </View>
         )}
       </ScrollView>
@@ -111,6 +154,9 @@ export default function CarDetailScreen() {
       <View style={[styles.bottomBar, { paddingBottom: botPad + 10 }]}>
         <TouchableOpacity style={styles.chatBtn} onPress={() => router.push({ pathname: '/chat/[id]', params: { id: '1' } })}>
           <Ionicons name="chatbubble-outline" size={20} color="#000" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.compareBtn} onPress={() => router.push('/comparison')}>
+          <Ionicons name="git-compare-outline" size={20} color="#000" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.buyBtn}>
           <Text style={styles.buyBtnText}>Buy Now — ${car.price.toLocaleString()}</Text>
@@ -154,10 +200,24 @@ const styles = StyleSheet.create({
   specRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#f5f5f5' },
   specRowLabel: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#888', textTransform: 'capitalize' },
   specRowValue: { fontSize: 13, fontFamily: 'Inter_600SemiBold', color: '#000' },
-  reviewScore: { fontSize: 56, fontFamily: 'Inter_700Bold', color: '#000', textAlign: 'center', marginTop: 20 },
-  reviewCount: { fontSize: 14, fontFamily: 'Inter_400Regular', color: '#888', textAlign: 'center' },
+  reviewScore: { fontSize: 48, fontFamily: 'Inter_700Bold', color: '#000' },
+  reviewCount: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#888', marginTop: 4 },
   bottomBar: { flexDirection: 'row', padding: 16, gap: 12, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#f0f0f0' },
   chatBtn: { width: 52, height: 52, borderRadius: 16, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center' },
+  compareBtn: { width: 52, height: 52, borderRadius: 16, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center' },
   buyBtn: { flex: 1, backgroundColor: '#000', borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
   buyBtnText: { fontSize: 15, fontFamily: 'Inter_600SemiBold', color: '#fff' },
+  ratingOverview: { flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 16, marginBottom: 20, backgroundColor: '#f8f8f8', borderRadius: 14, padding: 16 },
+  reviewCard: { backgroundColor: '#f8f8f8', borderRadius: 14, padding: 14, marginBottom: 12 },
+  reviewerRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 },
+  reviewerAvatar: { width: 36, height: 36, borderRadius: 18 },
+  reviewerName: { fontSize: 13, fontFamily: 'Inter_600SemiBold', color: '#000' },
+  reviewDate: { fontSize: 11, fontFamily: 'Inter_400Regular', color: '#888', marginTop: 2 },
+  reviewTitle: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#000', marginBottom: 6 },
+  reviewBody: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#666', lineHeight: 19 },
+  noReviewsWrap: { alignItems: 'center', paddingVertical: 32, gap: 8 },
+  noReviewsText: { fontSize: 14, fontFamily: 'Inter_400Regular', color: '#aaa' },
+  allReviewsLink: { fontSize: 13, fontFamily: 'Inter_500Medium', color: '#000' },
+  allReviewsBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderWidth: 1.5, borderColor: '#e0e0e0', borderRadius: 14, paddingVertical: 13, marginTop: 8, marginBottom: 8 },
+  allReviewsBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold', color: '#000' },
 });

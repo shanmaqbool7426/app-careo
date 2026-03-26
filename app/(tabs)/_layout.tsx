@@ -37,6 +37,8 @@ export default function TabsLayout() {
       <Tabs.Screen name="sell" options={{ tabBarIcon: ({ color, focused }) => <SellIcon color={color} focused={focused} /> }} />
       <Tabs.Screen name="favorites" options={{ tabBarIcon: ({ color }) => <Ionicons name="heart" size={24} color={color} /> }} />
       <Tabs.Screen name="profile" options={{ tabBarIcon: ({ color }) => <Ionicons name="person" size={24} color={color} /> }} />
+      <Tabs.Screen name="inbox" options={{ href: null }} />
+      <Tabs.Screen name="wallet" options={{ href: null }} />
     </Tabs>
   );
 }

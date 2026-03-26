@@ -118,6 +118,35 @@ export default function HomeScreen() {
         </ScrollView>
       </View>
 
+      {/* Quick Links */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Explore</Text>
+        </View>
+        <View style={styles.quickLinksGrid}>
+          <TouchableOpacity style={[styles.quickCard, { backgroundColor: '#1a1a2e' }]} onPress={() => router.push('/comparison')}>
+            <Ionicons name="git-compare" size={26} color="#fff" />
+            <Text style={styles.quickLabel}>Compare Cars</Text>
+            <Text style={styles.quickSub}>Side-by-side specs</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.quickCard, { backgroundColor: '#16213e' }]} onPress={() => router.push('/reviews')}>
+            <Ionicons name="star" size={26} color="#FFD700" />
+            <Text style={styles.quickLabel}>Car Reviews</Text>
+            <Text style={styles.quickSub}>Owner experiences</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.quickCard, { backgroundColor: '#0f3460' }]} onPress={() => router.push('/dealers')}>
+            <Ionicons name="business" size={26} color="#fff" />
+            <Text style={styles.quickLabel}>Dealers</Text>
+            <Text style={styles.quickSub}>Verified showrooms</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.quickCard, { backgroundColor: '#1a1a1a' }]} onPress={() => router.push('/top-deals')}>
+            <Ionicons name="pricetag" size={26} color="#fff" />
+            <Text style={styles.quickLabel}>Top Deals</Text>
+            <Text style={styles.quickSub}>Best offers today</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
       {/* Used Cars */}
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
@@ -219,4 +248,8 @@ const styles = StyleSheet.create({
   adMileage: { fontSize: 12, fontFamily: 'Inter_400Regular', color: '#888' },
   adCity: { fontSize: 12, fontFamily: 'Inter_400Regular', color: '#888' },
   adPrice: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#000' },
+  quickLinksGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 20, gap: 12 },
+  quickCard: { flex: 1, minWidth: '45%', borderRadius: 16, padding: 16, gap: 6 },
+  quickLabel: { fontSize: 14, fontFamily: 'Inter_700Bold', color: '#fff', marginTop: 4 },
+  quickSub: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.7)' },
 });

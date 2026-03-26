@@ -56,6 +56,13 @@ export default function RootLayout() {
               <Stack.Screen name="top-deals" options={{ presentation: 'card' }} />
               <Stack.Screen name="orders/index" options={{ presentation: 'card' }} />
               <Stack.Screen name="orders/track" options={{ presentation: 'card' }} />
+              <Stack.Screen name="new-cars/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="used-cars/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="comparison/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="reviews/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="reviews/[id]" options={{ presentation: 'card' }} />
+              <Stack.Screen name="dealers/index" options={{ presentation: 'card' }} />
+              <Stack.Screen name="dealers/[id]" options={{ presentation: 'card' }} />
             </Stack>
           </ErrorBoundary>
         </QueryClientProvider>

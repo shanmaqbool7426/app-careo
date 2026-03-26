@@ -3,6 +3,17 @@ import { router } from 'expo-router';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+const accountItems = [
+  { icon: 'car-outline', label: 'My Ads', route: '/orders', badge: '3' },
+  { icon: 'receipt-outline', label: 'My Orders', route: '/orders' },
+  { icon: 'chatbubbles-outline', label: 'Inbox', route: '/(tabs)/inbox' },
+  { icon: 'wallet-outline', label: 'Wallet', route: '/(tabs)/wallet' },
+  { icon: 'business-outline', label: 'Dealers', route: '/dealers' },
+  { icon: 'star-outline', label: 'Reviews', route: '/reviews' },
+  { icon: 'git-compare-outline', label: 'Compare', route: '/comparison' },
+  { icon: 'trophy-outline', label: 'Top Deals', route: '/top-deals' },
+];
+
 const menuItems = [
   { icon: 'person-outline', label: 'Edit Profile', route: '/settings/edit-profile' },
   { icon: 'location-outline', label: 'Address', route: '/settings/address' },
@@ -37,6 +48,22 @@ export default function ProfileScreen() {
           <Ionicons name="pencil" size={16} color="#000" />
         </TouchableOpacity>
       </TouchableOpacity>
+
+      {/* Account Quick Links */}
+      <View style={styles.accountSection}>
+        <Text style={styles.sectionLabel}>My Account</Text>
+        <View style={styles.accountGrid}>
+          {accountItems.map((item, i) => (
+            <TouchableOpacity key={i} style={styles.accountItem} onPress={() => router.push(item.route as any)}>
+              <View style={styles.accountIcon}>
+                <Ionicons name={item.icon as any} size={22} color="#000" />
+                {item.badge && <View style={styles.badge}><Text style={styles.badgeText}>{item.badge}</Text></View>}
+              </View>
+              <Text style={styles.accountItemLabel}>{item.label}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
 
       <View style={styles.menu}>
         {menuItems.map((item, i) => (
@@ -91,4 +118,12 @@ const styles = StyleSheet.create({
   toggleKnob: { width: 20, height: 20, borderRadius: 10, backgroundColor: '#fff' },
   logoutBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, marginHorizontal: 20, marginTop: 24, paddingVertical: 16, borderRadius: 14, borderWidth: 1.5, borderColor: '#ffe5e5' },
   logoutText: { fontSize: 15, fontFamily: 'Inter_600SemiBold', color: '#FF3B30' },
+  accountSection: { paddingHorizontal: 20, marginBottom: 20 },
+  sectionLabel: { fontSize: 16, fontFamily: 'Inter_700Bold', color: '#000', marginBottom: 14 },
+  accountGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  accountItem: { flex: 1, minWidth: '28%', alignItems: 'center', gap: 8 },
+  accountIcon: { width: 54, height: 54, borderRadius: 16, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center', position: 'relative' },
+  accountItemLabel: { fontSize: 11, fontFamily: 'Inter_500Medium', color: '#333', textAlign: 'center' },
+  badge: { position: 'absolute', top: -4, right: -4, backgroundColor: '#FF3B30', borderRadius: 8, minWidth: 16, height: 16, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 3 },
+  badgeText: { fontSize: 9, fontFamily: 'Inter_700Bold', color: '#fff' },
 });
