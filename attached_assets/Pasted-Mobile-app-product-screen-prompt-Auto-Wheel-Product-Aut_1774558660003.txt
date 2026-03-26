@@ -1,0 +1,50 @@
+Mobile app — product & screen prompt (Auto Wheel)
+Product: Auto marketplace app for Pakistan (or your market): browse new and used cars (and bikes/trucks if in scope), compare models, read reviews, find dealers, and let sellers/dealers manage listings and messages.
+
+Primary user types
+
+Buyer / browser — search, filters, saved favorites, contact dealer/seller.
+Seller / dealer — post/manage ads, see analytics, chat, profile/settings.
+Suggested app structure
+
+1. Onboarding & auth
+Sign up / login, forgot password, optional role (buyer vs dealer) if you use it.
+
+2. Home
+Hero search, shortcuts to New cars / Used cars / Compare / Reviews / Dealers, featured or recent listings.
+
+3. New cars
+List by make → model → variant; vehicle detail (specs, price, photos); link to reviews and comparison.
+
+4. Used cars
+Browse with filters (make, model, city, price, year); listing detail; sell my car flow; optional saved search.
+
+5. Comparisons
+Pick vehicles (cars first), side‑by‑side specs; open from new-car or listing context when possible.
+
+6. Reviews
+Hub for expert/user reviews by body type or make; article/review detail screens.
+
+7. Dealers
+Dealer directory, filters, dealer profile (inventory, contact, map if applicable).
+
+8. Post ad / sell
+Vehicle type → details → photos → price → publish; align fields with your backend.
+
+9. Account (logged-in)
+Dashboard (overview), My ads, Favorites, Chat, Reviews (mine), Social (followers/following if on web), Profile & settings (dealer info, packages if applicable), Ad analytics per listing.
+
+10. Static / support
+Support/FAQ, Privacy, Terms.
+
+11. Content (optional in v1)
+Blog and/or videos as lists + detail (or deep links to web).
+
+Non-functional
+
+Deep links for listing URLs, share sheet, push for chat/leads if you add them.
+Offline: cache last viewed listings where reasonable.
+Scope note: Match cars first; add bikes and trucks as separate sections or later releases using the same patterns.
+
+You can shorten this to “cars only, v1” by dropping bikes/trucks, blog, and videos. If you tell me your stack (React Native, Flutter, native), I can rewrite the same prompt with screen names and navigation tailored to that stack.
+
