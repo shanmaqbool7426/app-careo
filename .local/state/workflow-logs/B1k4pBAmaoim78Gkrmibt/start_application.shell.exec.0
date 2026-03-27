@@ -1,0 +1,45 @@
+[90mStarting project at /home/runner/workspace[39m
+[31mError: Cannot find module '@expo/config-plugins/build/android/codeMod'[39m
+[31mRequire stack:[39m
+[31m- /home/runner/workspace/node_modules/expo-font/plugin/build/withFontsAndroid.js[39m
+[31m- /home/runner/workspace/node_modules/expo-font/plugin/build/withFonts.js[39m
+[31m- /home/runner/workspace/node_modules/expo-font/app.plugin.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/utils/plugin-resolver.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/plugins/withStaticPlugin.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/plugins/withPlugins.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/index.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/plugins/withConfigPlugins.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/Config.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/index.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/detectDevClient.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/resolveOptions.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/index.js[39m
+[31m- /home/runner/workspace/node_modules/@expo/cli/build/bin/cli[39m
+[31m- /home/runner/workspace/node_modules/expo/bin/cli[39m
+[90mError: Cannot find module '@expo/config-plugins/build/android/codeMod'[39m
+[90mRequire stack:[39m
+[90m- /home/runner/workspace/node_modules/expo-font/plugin/build/withFontsAndroid.js[39m
+[90m- /home/runner/workspace/node_modules/expo-font/plugin/build/withFonts.js[39m
+[90m- /home/runner/workspace/node_modules/expo-font/app.plugin.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/utils/plugin-resolver.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/plugins/withStaticPlugin.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/plugins/withPlugins.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config-plugins/build/index.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/plugins/withConfigPlugins.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/Config.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/node_modules/@expo/config/build/index.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/detectDevClient.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/resolveOptions.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/build/src/start/index.js[39m
+[90m- /home/runner/workspace/node_modules/@expo/cli/build/bin/cli[39m
+[90m- /home/runner/workspace/node_modules/expo/bin/cli[39m
+[90m    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)[39m
+[90m    at Module._load (node:internal/modules/cjs/loader:1038:27)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1289:19)[39m
+[90m    at require (node:internal/modules/helpers:182:18)[39m
+[90m    at Object.<anonymous> (/home/runner/workspace/node_modules/expo-font/plugin/build/withFontsAndroid.js:10:19)[39m
+[90m    at Module._compile (node:internal/modules/cjs/loader:1521:14)[39m
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:1266:32)[39m
+[90m    at Module._load (node:internal/modules/cjs/loader:1091:12)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1289:19)[39m

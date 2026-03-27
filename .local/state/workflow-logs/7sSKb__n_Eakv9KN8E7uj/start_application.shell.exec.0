@@ -1,0 +1,100 @@
+[1G[0K⠙[1G[0K[90mStarting project at /home/runner/workspace[39m
+[2mStarting Metro Bundler[22m
+
+[31m[7m[1m ERROR [22m[27m[39m An unknown error occurred while installing React Native DevTools. Details:
+
+/home/runner/workspace/node_modules/@react-native/debugger-shell/bin/react-native-devtools: error while loading shared libraries: libglib-2.0.so.0: cannot open shared object file: No such file or directory
+
+[?25l[2K[1G[36m?[39m [1mIt looks like you're trying to use TypeScript but don't have the required
+dependencies installed. Would you like to install [36mtypescript@~5.9.2,[39m
+[36m@types/react@~19.2.10[39m?[22m [90m›[39m [90m(Y/n)[39m[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[
+22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓[49m[39m[47m[37m░░░░░░░░░░░░░░░[39m[49m[1m 11.6% [22m[2m(15/44)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[
+22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓[49m[39m[47m[37m░░░░░░░░░░░░░░░[39m[49m[1m 11.6% [22m[2m( 39/207)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[
+22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓[49m[39m[47m[37m░░░░░░░░░░░░░░░[39m[49m[1m 11.6% [22m[2m( 70/236)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[
+22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓[49m[39m[47m[37m░░░░░░░░░░░░░░[39m[49m[1m 16.3% [22m[2m(124/307)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[
+22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓[49m[39m[47m[37m░░░░░░░░░░░░░░[39m[49m[1m 16.3% [22m[2m(124/307)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░░[39m[49m[1m 22.8% [22m[2m(148/31
+0)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░[39m[49m[1m 26.3% [22m[2m(222/433)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░░[39m[49m[1m 22.8% [22m[2m(148/31
+0)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░[39m[49m[1m 30.3% [22m[2m(323/587)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░░[39m[49m[1m 22.8% [22m[2m(148/31
+0)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░[39m[49m[1m 30.3% [22m[2m(323/587)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░░[39m[49m[1m 24.5% [22m[2m(286/57
+8)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░░░[39m[49m[1m 30.3% [22m[2m(323/587)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░[39m[49m[1m 40.8% [22m[2m(464/72
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░[39m[49m[1m 45.1% [22m[2m(514/765)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░[39m[49m[1m 40.8% [22m[2m(464/72
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░[39m[49m[1m 45.1% [22m[2m(514/765)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░[39m[49m[1m 53.5% [22m[2m(588/80
+4)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░[39m[49m[1m 64.4% [22m[2m(704/877)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░[39m[49m[1m 53.5% [22m[2m(588/80
+4)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░[39m[49m[1m 78.7% [22m[2m(839/946)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░[39m[49m[1m 53.5% [22m[2m(588/80
+4)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░[39m[49m[1m 78.7% [22m[2m(839/946)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░[39m[49m[1m 72.3% [22m[2m(847/99
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░[39m[49m[1m 82.4% [22m[2m( 964/1062)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░[39m[49m[1m 72.3% [22m[2m(847/99
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░[39m[49m[1m 83.0% [22m[2m(1012/1111)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░[39m[49m[1m 72.3% [22m[2m(847/99
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 89.5% [22m[2m(1088/1150)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░[39m[49m[1m 72.3% [22m[2m(847/99
+6)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 89.5% [22m[2m(1088/1150)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 87.6% [22m[2m(1169/1
+249)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 89.5% [22m[2m(1088/1150)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 92.3% [22m[2m(1227/1
+277)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 95.9% [22m[2m(1312/1340)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 92.3% [22m[2m(1227/1
+277)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 95.9% [22m[2m(1312/1340)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 94.4% [22m[2m(1360/1
+400)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1471/1471)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 94.4% [22m[2m(1360/1
+400)[22m
+[80D[3A[0J[32m[1mλ[22m Bundled [39m[2m2294ms[22m[0m[2m node_modules/@expo/router-server/node/render.js (1400 modules)[22m[0m
+[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1471/1471)[22m
+[1mλ[22m [0m[2mnode_modules/@expo/router-server/node/[22m[0m[1mrender.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 94.4% [22m[2m(1360/1
+400)[22m
+[80D[3A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1471/1471)[22m
+"shadow*" style props are deprecated. Use "boxShadow".
+[80D[1A[0J[32m[1mWeb[22m Bundled [39m[2m4650ms[22m[0m[2m node_modules/expo-router/entry.js (1471 modules)[22m[0m
+[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1471/1471)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [47m[37m░░░░░░░░░░░░░░░░[39m[49m[1m  0.0% [22m[2m(0/1)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓[49m[39m[47m[37m░░░░░░░░░░░░░░[39m[49m[1m 17.8% [22m[2m(132/313)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░░░[39m[49m[1m 31.3% [22m[2m(355/635)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░░░░[39m[49m[1m 47.6% [22m[2m(510/739)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░░░[39m[49m[1m 63.8% [22m[2m(722/904)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░░[39m[49m[1m 76.7% [22m[2m(827/944)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░░[39m[49m[1m 81.7% [22m[2m( 990/1095)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░░[39m[49m[1m 87.7% [22m[2m(1139/1216)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 94.9% [22m[2m(1312/1347)[22m
+[80D[1A[0J[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1473/1473)[22m
+[80D[1A[0J[32m[1mWeb[22m Bundled [39m[2m1012ms[22m[0m[2m node_modules/expo-router/entry.js (1473 modules)[22m[0m
+[1mWeb[22m [0m[2mnode_modules/expo-router/[22m[0m[1mentry.js[22m [32m[42m▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[49m[39m[47m[37m░[39m[49m[1m 99.9% [22m[2m(1473/1473)[22m
+[80D[1A[0J[7m[37m[1m LOG [22m[39m[27m [web] Logs will appear in the browser console
