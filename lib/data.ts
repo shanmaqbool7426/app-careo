@@ -590,7 +590,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Tips & Advice',
     tags: ['Budget', 'Best Deals', '2024', 'New Cars'],
     image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800',
-    excerpt: 'Looking for a reliable car without breaking the bank? We've curated the top 10 cars you can buy in 2024 under $30,000.',
+    excerpt: "Looking for a reliable car without breaking the bank? We've curated the top 10 cars you can buy in 2024 under $30,000.",
     body: 'Buying a car on a budget doesn\'t mean you have to compromise on quality or features. In 2024, there are more great options than ever before at affordable price points.\n\nThe Suzuki Swift tops our list for budget buyers. At just $14,500 for the base model, it offers excellent fuel economy, a modern interior, and reliability that Suzuki is famous for.\n\nThe Toyota Corolla comes in at a higher price point but offers exceptional long-term value. Its resale value is among the best in its class, making it a smart financial decision.\n\nThe Honda City is another strong contender, especially if you need a slightly larger sedan with a more premium feel. The i-VTEC engine is smooth and economical.\n\nFor those who prefer a crossover, the Kia Sportage offers great value with its 7-speed DCT and advanced safety features. The Hyundai Tucson is similarly well-priced for what you get.\n\nWhen shopping on a budget, always consider the total cost of ownership: insurance, fuel, and maintenance — not just the sticker price.',
     author: 'Ahsan Raza',
     authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
