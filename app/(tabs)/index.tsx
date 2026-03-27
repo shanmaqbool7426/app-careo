@@ -5,8 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { cars, brands, specialOffers, blogPosts, videos, nearbyLocations } from '../../lib/data';
 
-const aiChips = ['Under $30K', 'Electric', 'SUV AWD', 'Family', 'Sports'];
-
 const budgetCategories = [
   { id: '1', label: 'Under $15K', max: 15000, icon: 'car-outline', color: '#e8f5e9', iconColor: '#4CAF50' },
   { id: '2', label: '$15K–$30K', max: 30000, icon: 'car', color: '#e3f2fd', iconColor: '#2196F3' },
@@ -24,22 +22,15 @@ export default function HomeScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-      {/* ===== AI HERO BANNER ===== */}
-      <View style={[styles.heroBanner, { paddingTop: topPad + 32 }]}>
-        <View style={styles.heroBg} />
+      {/* ===== HERO BANNER ===== */}
+      <View style={[styles.heroBanner, { paddingTop: topPad + 28 }]}>
         <View style={styles.heroInner}>
-          <View style={styles.aiBadge}>
-            <Ionicons name="sparkles" size={13} color="#fff" />
-            <Text style={styles.aiBadgeText}>AI-Powered Car Search</Text>
-          </View>
-          <Text style={styles.heroTitle}>Find Your{'\n'}Perfect Drive</Text>
           <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
-
           <View style={styles.aiSearchRow}>
             <TextInput
               style={styles.aiInput}
-              placeholder="Best electric cars with 300+ mile range"
-              placeholderTextColor="#999"
+              placeholder="e.g. family SUV under $40K"
+              placeholderTextColor="rgba(255,255,255,0.45)"
               value={aiQuery}
               onChangeText={setAiQuery}
             />
@@ -47,34 +38,9 @@ export default function HomeScreen() {
               style={styles.aiSearchBtn}
               onPress={() => router.push({ pathname: '/(tabs)/search', params: { q: aiQuery } })}
             >
-              <Ionicons name="search" size={18} color="#000" />
+              <Ionicons name="search" size={16} color="#000" />
               <Text style={styles.aiSearchBtnText}>Search</Text>
             </TouchableOpacity>
-          </View>
-
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.aiChipsRow}>
-            {aiChips.map(chip => (
-              <TouchableOpacity key={chip} style={styles.aiChip} onPress={() => setAiQuery(chip)}>
-                <Text style={styles.aiChipText}>{chip}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-
-          <View style={styles.statsRow}>
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>12,000+</Text>
-              <Text style={styles.statLabel}>Vehicles</Text>
-            </View>
-            <View style={styles.statDivider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>850+</Text>
-              <Text style={styles.statLabel}>Dealers</Text>
-            </View>
-            <View style={styles.statDivider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>24,000+</Text>
-              <Text style={styles.statLabel}>Reviews</Text>
-            </View>
           </View>
         </View>
       </View>
@@ -356,25 +322,13 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
 
-  heroBanner: { backgroundColor: '#0a0a0a', paddingBottom: 32 },
-  heroBg: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#0d0d0d' },
-  heroInner: { paddingHorizontal: 24 },
-  aiBadge: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'flex-start', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 6, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
-  aiBadgeText: { fontSize: 12, fontFamily: 'Inter_600SemiBold', color: '#fff' },
-  heroTitle: { fontSize: 34, fontFamily: 'Inter_700Bold', color: '#fff', lineHeight: 42, marginBottom: 12 },
-  heroSubtitle: { fontSize: 14, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.65)', lineHeight: 21, marginBottom: 22 },
-  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
-  aiInput: { flex: 1, backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 12, paddingHorizontal: 14, paddingVertical: 13, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
-  aiSearchBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#fff', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 13 },
-  aiSearchBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold', color: '#000' },
-  aiChipsRow: { flexGrow: 0, marginBottom: 22 },
-  aiChip: { marginRight: 8, borderWidth: 1, borderColor: 'rgba(255,255,255,0.25)', borderRadius: 20, paddingHorizontal: 13, paddingVertical: 6 },
-  aiChipText: { fontSize: 12, fontFamily: 'Inter_500Medium', color: 'rgba(255,255,255,0.85)' },
-  statsRow: { flexDirection: 'row', alignItems: 'center', gap: 0 },
-  statItem: { flex: 1, alignItems: 'center' },
-  statNum: { fontSize: 20, fontFamily: 'Inter_700Bold', color: '#fff' },
-  statLabel: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.55)', marginTop: 2 },
-  statDivider: { width: 1, height: 36, backgroundColor: 'rgba(255,255,255,0.15)' },
+  heroBanner: { backgroundColor: '#111', paddingBottom: 24 },
+  heroInner: { paddingHorizontal: 20 },
+  heroSubtitle: { fontSize: 13, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.6)', lineHeight: 20, marginBottom: 16 },
+  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  aiInput: { flex: 1, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 12, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff', borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)' },
+  aiSearchBtn: { flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#fff', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 12 },
+  aiSearchBtnText: { fontSize: 13, fontFamily: 'Inter_600SemiBold', color: '#000' },
 
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20, paddingBottom: 16 },
   greeting: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#888' },
