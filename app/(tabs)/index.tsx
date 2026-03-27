@@ -22,52 +22,72 @@ export default function HomeScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-      {/* ===== HERO BANNER ===== */}
-      <View style={[styles.heroBanner, { paddingTop: topPad + 28 }]}>
+      {/* ===== PROFILE + HERO BANNER ===== */}
+      <View style={[styles.heroBanner, { paddingTop: topPad + 20 }]}>
+
+        {/* Profile Row */}
+        <View style={styles.profileRow}>
+          <TouchableOpacity style={styles.profileLeft} onPress={() => router.push('/(tabs)/profile')}>
+            <Image source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }} style={styles.avatar} />
+            <View>
+              <Text style={styles.greeting}>Good Morning 👋</Text>
+              <Text style={styles.username}>Andrew Ainsley</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.headerBtn} onPress={() => router.push('/notifications')}>
+            <Ionicons name="notifications-outline" size={22} color="rgba(255,255,255,0.85)" />
+            <View style={styles.notifDot} />
+          </TouchableOpacity>
+        </View>
+
+        {/* Divider */}
+        <View style={styles.heroDivider} />
+
+        {/* Hero Content */}
         <View style={styles.heroInner}>
+          <Text style={styles.heroTag}>AI-Powered Marketplace</Text>
+          <Text style={styles.heroTitle}>Find Your{'\n'}Perfect Drive</Text>
           <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
+
+          {/* Search */}
           <View style={styles.aiSearchRow}>
-            <TextInput
-              style={styles.aiInput}
-              placeholder="e.g. family SUV under $40K"
-              placeholderTextColor="rgba(255,255,255,0.45)"
-              value={aiQuery}
-              onChangeText={setAiQuery}
-            />
+            <View style={styles.aiInputWrap}>
+              <Ionicons name="search-outline" size={16} color="rgba(255,255,255,0.4)" style={{ marginRight: 8 }} />
+              <TextInput
+                style={styles.aiInput}
+                placeholder="e.g. family SUV under $40K"
+                placeholderTextColor="rgba(255,255,255,0.38)"
+                value={aiQuery}
+                onChangeText={setAiQuery}
+              />
+            </View>
             <TouchableOpacity
               style={styles.aiSearchBtn}
               onPress={() => router.push({ pathname: '/(tabs)/search', params: { q: aiQuery } })}
             >
-              <Ionicons name="search" size={16} color="#000" />
               <Text style={styles.aiSearchBtnText}>Search</Text>
             </TouchableOpacity>
           </View>
+
+          {/* Stats row */}
+          <View style={styles.statsRow}>
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>12K+</Text>
+              <Text style={styles.statLabel}>Vehicles</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>850+</Text>
+              <Text style={styles.statLabel}>Dealers</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={styles.statNum}>24K+</Text>
+              <Text style={styles.statLabel}>Reviews</Text>
+            </View>
+          </View>
         </View>
       </View>
-
-      {/* ===== HEADER BELOW BANNER ===== */}
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.greeting}>Good Morning</Text>
-          <Text style={styles.username}>Andrew Ainsley</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <TouchableOpacity style={styles.headerBtn} onPress={() => router.push('/notifications')}>
-            <Ionicons name="notifications-outline" size={22} color="#000" />
-            <View style={styles.notifDot} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/(tabs)/profile')}>
-            <Image source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }} style={styles.avatar} />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* Search Bar */}
-      <TouchableOpacity style={styles.searchBar} onPress={() => router.push('/(tabs)/search')}>
-        <Ionicons name="search" size={18} color="#888" />
-        <Text style={styles.searchPlaceholder}>Search make, model, year...</Text>
-        <Ionicons name="options" size={18} color="#888" />
-      </TouchableOpacity>
 
       {/* Promo Banner */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
@@ -322,23 +342,29 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
 
-  heroBanner: { backgroundColor: '#111', paddingBottom: 24 },
+  heroBanner: { backgroundColor: '#0e0e0e', paddingBottom: 28 },
+  profileRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 20 },
+  profileLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  avatar: { width: 42, height: 42, borderRadius: 21, borderWidth: 2, borderColor: 'rgba(255,255,255,0.2)' },
+  greeting: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.5)', marginBottom: 2 },
+  username: { fontSize: 15, fontFamily: 'Inter_700Bold', color: '#fff' },
+  headerBtn: { position: 'relative', padding: 6, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 20 },
+  notifDot: { position: 'absolute', top: 6, right: 6, width: 7, height: 7, borderRadius: 4, backgroundColor: '#FF3B30', borderWidth: 1, borderColor: '#0e0e0e' },
+  heroDivider: { height: 1, backgroundColor: 'rgba(255,255,255,0.07)', marginHorizontal: 20, marginBottom: 24 },
   heroInner: { paddingHorizontal: 20 },
-  heroSubtitle: { fontSize: 13, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.6)', lineHeight: 20, marginBottom: 16 },
-  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  aiInput: { flex: 1, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 12, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff', borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)' },
-  aiSearchBtn: { flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#fff', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 12 },
-  aiSearchBtnText: { fontSize: 13, fontFamily: 'Inter_600SemiBold', color: '#000' },
-
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20, paddingBottom: 16 },
-  greeting: { fontSize: 13, fontFamily: 'Inter_400Regular', color: '#888' },
-  username: { fontSize: 18, fontFamily: 'Inter_700Bold', color: '#000' },
-  headerRight: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  headerBtn: { position: 'relative', padding: 4 },
-  notifDot: { position: 'absolute', top: 4, right: 4, width: 8, height: 8, borderRadius: 4, backgroundColor: '#FF3B30' },
-  avatar: { width: 40, height: 40, borderRadius: 20 },
-  searchBar: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginBottom: 20, backgroundColor: '#f5f5f5', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 13, gap: 8 },
-  searchPlaceholder: { flex: 1, fontSize: 14, fontFamily: 'Inter_400Regular', color: '#999' },
+  heroTag: { fontSize: 11, fontFamily: 'Inter_600SemiBold', color: 'rgba(255,255,255,0.4)', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 10 },
+  heroTitle: { fontSize: 30, fontFamily: 'Inter_700Bold', color: '#fff', lineHeight: 38, marginBottom: 10 },
+  heroSubtitle: { fontSize: 13, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.55)', lineHeight: 20, marginBottom: 20 },
+  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 24 },
+  aiInputWrap: { flex: 1, flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.07)', borderRadius: 12, paddingHorizontal: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  aiInput: { flex: 1, paddingVertical: 13, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff' },
+  aiSearchBtn: { backgroundColor: '#fff', borderRadius: 12, paddingHorizontal: 18, paddingVertical: 13 },
+  aiSearchBtnText: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#000' },
+  statsRow: { flexDirection: 'row', alignItems: 'center' },
+  statItem: { flex: 1, alignItems: 'center' },
+  statNum: { fontSize: 18, fontFamily: 'Inter_700Bold', color: '#fff' },
+  statLabel: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.4)', marginTop: 2 },
+  statDivider: { width: 1, height: 30, backgroundColor: 'rgba(255,255,255,0.1)' },
   offerCard: { width: 200, borderRadius: 16, padding: 16 },
   offerDiscount: { fontSize: 13, fontFamily: 'Inter_500Medium', color: 'rgba(255,255,255,0.8)', marginBottom: 4 },
   offerPct: { fontSize: 22, fontFamily: 'Inter_700Bold', color: '#fff' },
