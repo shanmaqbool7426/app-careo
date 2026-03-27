@@ -48,6 +48,8 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
+          <View style={{ flex: 1 }} />
+
           {/* Hero Text + Search */}
           <View style={styles.heroInner}>
             <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
@@ -326,8 +328,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
 
-  heroBanner: { width: '100%', height: 280 },
-  heroGradient: { flex: 1, justifyContent: 'space-between', paddingBottom: 24 },
+  heroBanner: { width: '100%', height: 260, overflow: 'hidden' },
+  heroGradient: { flex: 1, justifyContent: 'flex-start', paddingBottom: 22 },
   profileRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 0 },
   profileLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   avatar: { width: 42, height: 42, borderRadius: 21, borderWidth: 2, borderColor: 'rgba(255,255,255,0.35)' },
