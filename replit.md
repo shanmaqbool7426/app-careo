@@ -35,7 +35,7 @@ A comprehensive car marketplace mobile app built with Expo/React Native, targeti
 │   │   └── fill-profile.tsx
 │   ├── (tabs)/
 │   │   ├── _layout.tsx          # Tab bar: Home/Search/Sell/Favorites/Profile (Inbox+Wallet hidden via href:null)
-│   │   ├── index.tsx            # Home feed (offers, brands, budget categories, top deals, explore grid)
+│   │   ├── index.tsx            # Home feed — Figma-matched light design: profile header, gray search bar, Special Offers featured card, 2×4 brand grid, Top Deals filter chips, New/Used Cars, Near You, Budget Categories, Explore grid, Blog, Videos, Recent Ads
 │   │   ├── search.tsx           # Search + filter (new/used toggle, sort)
 │   │   ├── sell.tsx             # Sell a car (multi-step form)
 │   │   ├── favorites.tsx        # Saved/liked cars
