@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, Platform, ImageBackground } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { cars, brands, specialOffers, blogPosts, videos, nearbyLocations } from '../../lib/data';
 
@@ -22,72 +23,55 @@ export default function HomeScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-      {/* ===== PROFILE + HERO BANNER ===== */}
-      <View style={[styles.heroBanner, { paddingTop: topPad + 20 }]}>
-
-        {/* Profile Row */}
-        <View style={styles.profileRow}>
-          <TouchableOpacity style={styles.profileLeft} onPress={() => router.push('/(tabs)/profile')}>
-            <Image source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }} style={styles.avatar} />
-            <View>
-              <Text style={styles.greeting}>Good Morning 👋</Text>
-              <Text style={styles.username}>Andrew Ainsley</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.headerBtn} onPress={() => router.push('/notifications')}>
-            <Ionicons name="notifications-outline" size={22} color="rgba(255,255,255,0.85)" />
-            <View style={styles.notifDot} />
-          </TouchableOpacity>
-        </View>
-
-        {/* Divider */}
-        <View style={styles.heroDivider} />
-
-        {/* Hero Content */}
-        <View style={styles.heroInner}>
-          <Text style={styles.heroTag}>AI-Powered Marketplace</Text>
-          <Text style={styles.heroTitle}>Find Your{'\n'}Perfect Drive</Text>
-          <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
-
-          {/* Search */}
-          <View style={styles.aiSearchRow}>
-            <View style={styles.aiInputWrap}>
-              <Ionicons name="search-outline" size={16} color="rgba(255,255,255,0.4)" style={{ marginRight: 8 }} />
-              <TextInput
-                style={styles.aiInput}
-                placeholder="e.g. family SUV under $40K"
-                placeholderTextColor="rgba(255,255,255,0.38)"
-                value={aiQuery}
-                onChangeText={setAiQuery}
-              />
-            </View>
-            <TouchableOpacity
-              style={styles.aiSearchBtn}
-              onPress={() => router.push({ pathname: '/(tabs)/search', params: { q: aiQuery } })}
-            >
-              <Text style={styles.aiSearchBtnText}>Search</Text>
+      {/* ===== PREMIUM HERO BANNER ===== */}
+      <ImageBackground
+        source={{ uri: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200' }}
+        style={styles.heroBanner}
+        resizeMode="cover"
+      >
+        <LinearGradient
+          colors={['rgba(0,0,0,0.45)', 'rgba(0,0,0,0.72)', 'rgba(0,0,0,0.92)']}
+          style={[styles.heroGradient, { paddingTop: topPad + 18 }]}
+        >
+          {/* Profile Row */}
+          <View style={styles.profileRow}>
+            <TouchableOpacity style={styles.profileLeft} onPress={() => router.push('/(tabs)/profile')}>
+              <Image source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }} style={styles.avatar} />
+              <View>
+                <Text style={styles.greeting}>Good Morning 👋</Text>
+                <Text style={styles.username}>Andrew Ainsley</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.headerBtn} onPress={() => router.push('/notifications')}>
+              <Ionicons name="notifications-outline" size={20} color="#fff" />
+              <View style={styles.notifDot} />
             </TouchableOpacity>
           </View>
 
-          {/* Stats row */}
-          <View style={styles.statsRow}>
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>12K+</Text>
-              <Text style={styles.statLabel}>Vehicles</Text>
-            </View>
-            <View style={styles.statDivider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>850+</Text>
-              <Text style={styles.statLabel}>Dealers</Text>
-            </View>
-            <View style={styles.statDivider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statNum}>24K+</Text>
-              <Text style={styles.statLabel}>Reviews</Text>
+          {/* Hero Text + Search */}
+          <View style={styles.heroInner}>
+            <Text style={styles.heroSubtitle}>Premium marketplace for new & used vehicles. Use AI to search in plain English — just say what you need.</Text>
+            <View style={styles.aiSearchRow}>
+              <View style={styles.aiInputWrap}>
+                <Ionicons name="search-outline" size={15} color="rgba(255,255,255,0.5)" style={{ marginRight: 8 }} />
+                <TextInput
+                  style={styles.aiInput}
+                  placeholder="e.g. family SUV under $40K"
+                  placeholderTextColor="rgba(255,255,255,0.38)"
+                  value={aiQuery}
+                  onChangeText={setAiQuery}
+                />
+              </View>
+              <TouchableOpacity
+                style={styles.aiSearchBtn}
+                onPress={() => router.push({ pathname: '/(tabs)/search', params: { q: aiQuery } })}
+              >
+                <Text style={styles.aiSearchBtnText}>Search</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
-      </View>
+        </LinearGradient>
+      </ImageBackground>
 
       {/* Promo Banner */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
@@ -342,29 +326,22 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
 
-  heroBanner: { backgroundColor: '#0e0e0e', paddingBottom: 28 },
-  profileRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 20 },
+  heroBanner: { width: '100%', height: 280 },
+  heroGradient: { flex: 1, justifyContent: 'space-between', paddingBottom: 24 },
+  profileRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 0 },
   profileLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  avatar: { width: 42, height: 42, borderRadius: 21, borderWidth: 2, borderColor: 'rgba(255,255,255,0.2)' },
-  greeting: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.5)', marginBottom: 2 },
+  avatar: { width: 42, height: 42, borderRadius: 21, borderWidth: 2, borderColor: 'rgba(255,255,255,0.35)' },
+  greeting: { fontSize: 12, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.7)', marginBottom: 1 },
   username: { fontSize: 15, fontFamily: 'Inter_700Bold', color: '#fff' },
-  headerBtn: { position: 'relative', padding: 6, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 20 },
-  notifDot: { position: 'absolute', top: 6, right: 6, width: 7, height: 7, borderRadius: 4, backgroundColor: '#FF3B30', borderWidth: 1, borderColor: '#0e0e0e' },
-  heroDivider: { height: 1, backgroundColor: 'rgba(255,255,255,0.07)', marginHorizontal: 20, marginBottom: 24 },
+  headerBtn: { position: 'relative', width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.15)', alignItems: 'center', justifyContent: 'center' },
+  notifDot: { position: 'absolute', top: 7, right: 7, width: 7, height: 7, borderRadius: 4, backgroundColor: '#FF3B30', borderWidth: 1.5, borderColor: 'transparent' },
   heroInner: { paddingHorizontal: 20 },
-  heroTag: { fontSize: 11, fontFamily: 'Inter_600SemiBold', color: 'rgba(255,255,255,0.4)', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 10 },
-  heroTitle: { fontSize: 30, fontFamily: 'Inter_700Bold', color: '#fff', lineHeight: 38, marginBottom: 10 },
-  heroSubtitle: { fontSize: 13, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.55)', lineHeight: 20, marginBottom: 20 },
-  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 24 },
-  aiInputWrap: { flex: 1, flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.07)', borderRadius: 12, paddingHorizontal: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  aiInput: { flex: 1, paddingVertical: 13, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff' },
+  heroSubtitle: { fontSize: 13, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.75)', lineHeight: 20, marginBottom: 16 },
+  aiSearchRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  aiInputWrap: { flex: 1, flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.12)', borderRadius: 12, paddingHorizontal: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)' },
+  aiInput: { flex: 1, paddingVertical: 12, fontSize: 13, fontFamily: 'Inter_400Regular', color: '#fff' },
   aiSearchBtn: { backgroundColor: '#fff', borderRadius: 12, paddingHorizontal: 18, paddingVertical: 13 },
-  aiSearchBtnText: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#000' },
-  statsRow: { flexDirection: 'row', alignItems: 'center' },
-  statItem: { flex: 1, alignItems: 'center' },
-  statNum: { fontSize: 18, fontFamily: 'Inter_700Bold', color: '#fff' },
-  statLabel: { fontSize: 11, fontFamily: 'Inter_400Regular', color: 'rgba(255,255,255,0.4)', marginTop: 2 },
-  statDivider: { width: 1, height: 30, backgroundColor: 'rgba(255,255,255,0.1)' },
+  aiSearchBtnText: { fontSize: 13, fontFamily: 'Inter_700Bold', color: '#111' },
   offerCard: { width: 200, borderRadius: 16, padding: 16 },
   offerDiscount: { fontSize: 13, fontFamily: 'Inter_500Medium', color: 'rgba(255,255,255,0.8)', marginBottom: 4 },
   offerPct: { fontSize: 22, fontFamily: 'Inter_700Bold', color: '#fff' },
